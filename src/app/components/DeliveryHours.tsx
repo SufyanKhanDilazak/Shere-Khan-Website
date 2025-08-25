@@ -3,14 +3,15 @@
 
 import { memo, useRef } from 'react';
 import * as THREE from 'three';
-import type { GLTF } from 'three-stdlib';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, useGLTF } from '@react-three/drei';
 import { BIZ } from '@/lib/site';
 import type { JSX } from 'react';
 
-const RikshaModel = memo(function RikshaModel(props: JSX.IntrinsicElements['group']) {
-  const { scene } = useGLTF('/riksha.glb') as GLTF;
+const RikshaModel = memo(function RikshaModel(
+  props: JSX.IntrinsicElements['group']
+) {
+  const { scene } = useGLTF('/riksha.glb') as unknown as { scene: THREE.Group };
   const ref = useRef<THREE.Group>(null);
 
   useFrame(({ clock }) => {
@@ -87,12 +88,13 @@ export const DeliveryHours = memo(function DeliveryHours() {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto mb-6 w-full max-w-md rounded-2xl border-2 border-[#7A1D1D] backdrop-blur-sm p-4 shadow-2xl">
-            <div className="divide-y divide-[#7A1D1D]/10">
+          {/* Frosted glass card with white text */}
+          <div className="relative z-10 mx-auto mb-6 w-full max-w-md rounded-2xl border-2 border-[#7A1D1D] bg-white/10 backdrop-blur-sm p-4 shadow-2xl">
+            <div className="divide-y divide-white/20">
               {rows.map(([d, h]) => (
                 <div key={d} className="flex items-center justify-between py-2 text-sm">
-                  <span className="font-semibold text-[#7A1D1D]">{d}</span>
-                  <span className="text-neutral-700">{h}</span>
+                  <span className="font-semibold text-white">{d}</span>
+                  <span className="text-white/90">{h}</span>
                 </div>
               ))}
             </div>
