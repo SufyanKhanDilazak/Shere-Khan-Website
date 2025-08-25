@@ -171,7 +171,7 @@ export default function AboutPage() {
 
         {/* image */}
         <div className="order-1 md:order-2 flex justify-center">
-          <figure className="relative w-full max-w-sm sm:max-w-md aspect-[4/3]">
+          <figure className="relative w-full max-w-sm sm:max-w-md aspect-[3/4]">
             <Image
               src="/perry1.jpg"
               alt="Shere Khan Kitchen — grill & spice"

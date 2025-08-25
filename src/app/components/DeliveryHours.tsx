@@ -87,7 +87,7 @@ export const DeliveryHours = memo(function DeliveryHours() {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto mb-6 w-full max-w-md rounded-2xl border-2 border-[#7A1D1D] bg-white p-4 shadow-2xl">
+          <div className="relative z-10 mx-auto mb-6 w-full max-w-md rounded-2xl border-2 border-[#7A1D1D] backdrop-blur-sm p-4 shadow-2xl">
             <div className="divide-y divide-[#7A1D1D]/10">
               {rows.map(([d, h]) => (
                 <div key={d} className="flex items-center justify-between py-2 text-sm">
