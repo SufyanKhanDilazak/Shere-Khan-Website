@@ -1,4 +1,3 @@
-// app/about/page.tsx
 'use client';
 import Image from 'next/image';
 import { BIZ, PALETTE } from '@/lib/site';
@@ -7,6 +6,9 @@ export default function AboutPage() {
   const directionsUrl = `https://maps.google.com/?q=${encodeURIComponent(
     `${BIZ.name}, ${BIZ.address}`
   )}`;
+
+  const btnStyle =
+    'inline-flex items-center justify-center rounded-lg px-5 py-2 text-sm font-semibold shadow-md transition-colors active:translate-y-[1px] bg-[#52f1e6] text-white hover:bg-[#3eddd3]';
 
   return (
     <main className="mx-auto w-full max-w-7xl px-4 md:px-6">
@@ -44,6 +46,7 @@ export default function AboutPage() {
             Legendary • Reimagined
           </div>
 
+          {/* ✅ keep this heading white */}
           <h1 className="mt-3 text-white font-extrabold leading-[1.05] text-[clamp(30px,5.5vw,60px)] drop-shadow-[0_8px_28px_rgba(0,0,0,0.45)]">
             About {BIZ.name}
           </h1>
@@ -59,12 +62,7 @@ export default function AboutPage() {
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl border-2 px-5 py-2 text-sm font-extrabold text-white"
-              style={{
-                borderColor: PALETTE.maroon,
-                background: 'transparent',
-                backdropFilter: 'blur(2px)',
-              }}
+              className={btnStyle}
             >
               📍 Find Us
             </a>
@@ -77,7 +75,7 @@ export default function AboutPage() {
         <div className="order-2 md:order-1">
           <h2
             className="text-center md:text-left text-2xl sm:text-3xl font-extrabold"
-            style={{ color: PALETTE.red }}
+            style={{ color: PALETTE.orange }}
           >
             Our Story
           </h2>
@@ -97,75 +95,18 @@ export default function AboutPage() {
             <li>• House chutneys &amp; marinades</li>
           </ul>
 
-          {/* full-color brand icons */}
-          <div className="mt-6 flex items-center justify-center md:justify-start gap-3">
-            {/* Instagram */}
-            <a
-              href="https://instagram.com/your-handle"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="inline-grid h-11 w-11 place-items-center rounded-full border bg-white shadow-md"
-              style={{ borderColor: `${PALETTE.maroon}33` }}
-            >
-              {/* SVG code unchanged */}
-              <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
-                <defs>
-                  <linearGradient id="ig" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#F58529" />
-                    <stop offset="50%" stopColor="#DD2A7B" />
-                    <stop offset="100%" stopColor="#8134AF" />
-                  </linearGradient>
-                </defs>
-                <path
-                  fill="url(#ig)"
-                  d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5a5 5 0 100 10 5 5 0 000-10zm6-1a1 1 0 100 2 1 1 0 000-2z"
-                />
-              </svg>
-            </a>
-
-            {/* Facebook */}
-            <a
-              href="https://facebook.com/your-handle"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Facebook"
-              className="inline-grid h-11 w-11 place-items-center rounded-full border bg-white shadow-md"
-              style={{ borderColor: `${PALETTE.maroon}33` }}
-            >
-              <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
-                <rect x="2" y="2" width="20" height="20" rx="5" fill="#1877F2" />
-                <path
-                  fill="#fff"
-                  d="M15 8h-1.6c-.5 0-.9.4-.9.9V10H15l-.3 2h-1.9v6h-2.2v-6H8.8v-2h1.8V8.8A2.8 2.8 0 0 1 13.4 6H15v2z"
-                />
-              </svg>
-            </a>
-
-            {/* TikTok */}
-            <a
-              href="https://tiktok.com/@your-handle"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="TikTok"
-              className="inline-grid h-11 w-11 place-items-center rounded-full border bg-white shadow-md"
-              style={{ borderColor: `${PALETTE.maroon}33` }}
-            >
-              <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden>
-                <path
-                  fill="#121212"
-                  d="M13 3v11.3a3.5 3.5 0 1 1-2.6-3.4V8.2c-3.7-.2-6.6 2.6-6.6 6.1 0 3.5 2.9 6.2 6.6 6.2 3.6 0 6.6-2.7 6.6-6.1V9.6c1 .8 2.3 1.3 3.7 1.4V8.6c-1.8-.2-3.5-1.1-4.6-2.4C14.5 5.3 13.9 4.2 13.7 3H13z"
-                />
-                <path
-                  fill="#25F4EE"
-                  d="M13 3v3.2c.2 1.2.8 2.3 1.6 3.2 1.1 1.3 2.8 2.2 4.6 2.4V9.6c-1.4-.1-2.7-.6-3.7-1.4V7c-.9-.7-1.6-1.7-1.9-2.8A9 9 0 0 1 13 3z"
-                />
-                <path
-                  fill="#FE2C55"
-                  d="M10.4 10.9v2c-1.5-.4-3.1.4-3.6 2-0.5 1.6.4 3.3 2 3.8 1.6.5 3.3-.4 3.8-2 .1-.3.2-.6.2-.9V6.6l4.6 1.2V5.2l-6.6-1.7v9.6c0 .3-.1.6-.2.9-.4 1.1-1.4 1.9-2.6 2"
-                />
-              </svg>
-            </a>
+          {/* riksha1.jpg */}
+          <div className="mt-5 flex items-center justify-center md:justify-start">
+            <figure className="relative w-full max-w-[200px] aspect-[4/5]">
+              <Image
+                src="/riksha1.jpg"
+                alt="Riksha aesthetic"
+                fill
+                className="rounded-xl object-cover shadow-[0_10px_30px_rgba(0,0,0,0.2)]"
+                sizes="(max-width: 640px) 180px, 200px"
+                priority
+              />
+            </figure>
           </div>
         </div>
 
@@ -199,7 +140,7 @@ export default function AboutPage() {
           >
             <h3
               className="text-base font-extrabold mb-1"
-              style={{ color: PALETTE.red }}
+              style={{ color: PALETTE.orange }}
             >
               {it.title}
             </h3>
@@ -213,7 +154,7 @@ export default function AboutPage() {
         className="mt-12 rounded-2xl border-2 bg-white p-6 text-center shadow-[0_22px_44px_rgba(0,0,0,0.12)]"
         style={{ borderColor: PALETTE.orange }}
       >
-        <h2 className="text-xl font-extrabold mb-1" style={{ color: PALETTE.red }}>
+        <h2 className="text-xl font-extrabold mb-1" style={{ color: PALETTE.orange }}>
           What guests say
         </h2>
         <p className="text-xs text-neutral-600 mb-3">

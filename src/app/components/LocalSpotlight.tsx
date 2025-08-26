@@ -3,6 +3,7 @@
 import { memo, useEffect } from 'react';
 import { motion, useAnimation, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
+import { PALETTE } from '@/lib/site'; // ✅ use your theme palette
 
 const SPOTLIGHT = [
   'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80&auto=format&fit=crop',
@@ -21,7 +22,6 @@ export const LocalSpotlight = memo(function LocalSpotlight() {
       x: ['0%', '-50%'],
       transition: { duration: 26, ease: 'linear', repeat: Infinity },
     });
-    // No cleanup needed; framer handles it
   }, [controls, reduce]);
 
   const onEnter = () => {
@@ -40,7 +40,10 @@ export const LocalSpotlight = memo(function LocalSpotlight() {
 
   return (
     <section className="mx-auto w-full max-w-7xl px-4 md:px-6 py-8">
-      <h3 className="mb-3 text-center text-xl sm:text-2xl font-extrabold text-[#DC2626]">
+      <h3
+        className="mb-3 text-center text-xl sm:text-2xl font-extrabold"
+        style={{ color: PALETTE.orange }} // ✅ brand orange
+      >
         Local Spotlight · Altrincham
       </h3>
 
@@ -66,7 +69,6 @@ export const LocalSpotlight = memo(function LocalSpotlight() {
                 fill
                 sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 320px"
                 className="object-cover"
-                priority={false}
               />
             </div>
           ))}

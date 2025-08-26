@@ -10,6 +10,7 @@ import { Reviews } from './components/Reviews';
 import { DeliveryHours } from './components/DeliveryHours';
 import { PALETTE } from '@/lib/site';
 import { LocalSpotlight } from './components/LocalSpotlight';
+import ProfileCard from './components/Profile';
 
 /** Allow CSS custom properties like --orange, --teal, etc. */
 type CSSVars = React.CSSProperties & {
@@ -130,13 +131,18 @@ export default function Page() {
           {/* promo ribbon */}
           <div className="w-full bg-white/90 py-2 shadow-sm ring-1 ring-[var(--maroon)]/10">
             <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-1 px-4 text-[11px] font-semibold text-[var(--maroon)] sm:flex-row sm:justify-between sm:gap-3 sm:text-xs md:px-6">
-              <span>🔥 Pure Desi Flavours</span>
               <span>🍛 100% Halal</span>
               <span>🚚 Delivery in 30–40 min</span>
             </div>
           </div>
           <MotifBar />
           <Countup />
+          <ProfileCard
+  avatarUrl="/menu.jpg"
+  enableTilt={true}
+  enableMobileTilt={false}
+  className="mx-auto"
+/>
           <Menu />
           <LocalSpotlight />
           <Reviews />

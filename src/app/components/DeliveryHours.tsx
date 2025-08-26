@@ -1,11 +1,10 @@
-// components/DeliveryHours.tsx
 'use client';
 
 import { memo, useRef } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, useGLTF } from '@react-three/drei';
-import { BIZ } from '@/lib/site';
+import { BIZ, PALETTE } from '@/lib/site';
 import type { JSX } from 'react';
 
 const RikshaModel = memo(function RikshaModel(
@@ -49,9 +48,9 @@ export const DeliveryHours = memo(function DeliveryHours() {
     ['Sun', '17:00 – 22:00'],
   ];
 
-  const btnBase =
-    'inline-flex items-center justify-center rounded-xl border-2 px-6 py-3 text-sm sm:text-base font-extrabold shadow-lg active:translate-y-[1px] transition-transform';
-  const btnOutline = `${btnBase} border-[#7A1D1D] bg-white/95 text-[#7A1D1D]`;
+  // ✅ Sleek, slim rectangle button
+  const btnSlim =
+    'inline-flex items-center justify-center rounded-md px-4 py-1 text-sm font-medium bg-[#52f1e6] text-white shadow-sm transition-all hover:shadow-md hover:brightness-110 active:scale-[0.98]';
 
   return (
     <section
@@ -69,7 +68,8 @@ export const DeliveryHours = memo(function DeliveryHours() {
           <div className="pt-6 pb-2 text-center">
             <h2
               id="delivery-hours-heading"
-              className="text-2xl sm:text-3xl font-extrabold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
+              className="text-2xl sm:text-3xl lg:text-4xl font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
+              style={{ color: PALETTE.orange }}
             >
               Delivery Hours
             </h2>
@@ -88,11 +88,14 @@ export const DeliveryHours = memo(function DeliveryHours() {
             </div>
           </div>
 
-          {/* Frosted glass card with white text */}
+          {/* Frosted glass card */}
           <div className="relative z-10 mx-auto mb-6 w-full max-w-md rounded-2xl border-2 border-[#7A1D1D] bg-white/10 backdrop-blur-sm p-4 shadow-2xl">
             <div className="divide-y divide-white/20">
               {rows.map(([d, h]) => (
-                <div key={d} className="flex items-center justify-between py-2 text-sm">
+                <div
+                  key={d}
+                  className="flex items-center justify-between py-2 text-sm"
+                >
                   <span className="font-semibold text-white">{d}</span>
                   <span className="text-white/90">{h}</span>
                 </div>
@@ -103,7 +106,7 @@ export const DeliveryHours = memo(function DeliveryHours() {
                 href={`${BIZ.orderUrl}/locations`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={btnOutline}
+                className={btnSlim}
               >
                 All Locations
               </a>

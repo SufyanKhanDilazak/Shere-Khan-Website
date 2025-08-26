@@ -1,4 +1,3 @@
-// components/Footer.tsx
 'use client';
 
 import React, { memo, useEffect, useRef } from 'react';
@@ -72,21 +71,21 @@ const Footer: React.FC = memo(function Footer() {
   const telHref = `tel:${BIZ.phone.replace(/[()\s-]/g, '')}`;
 
   return (
-    <footer className="mt-10 border-t-2 border-[#F15A24]/70 bg-white py-6">
+    <footer className="mt-10 border-t-2 border-[#52f1e6]/70 bg-white py-6">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 md:px-6 lg:grid-cols-3">
         {/* Info */}
         <div className="text-center lg:text-left space-y-1.5">
-          <p className="text-base font-bold text-[#DC2626]">{BIZ.name}</p>
+          <p className="text-base font-bold text-[#F15A24]">{BIZ.name}</p>
           <p className="text-xs text-neutral-700">{BIZ.address}</p>
           <a href={telHref} className="block text-xs underline text-[#7A1D1D]">
             {BIZ.phone}
           </a>
 
-          {/* Social icons full color */}
+          {/* Social icons */}
           <div className="mt-2 flex justify-center lg:justify-start gap-3">
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/thesherekhan_?igsh=MWQ0cXoybzl6ZjFxbA=="
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -150,13 +149,13 @@ const Footer: React.FC = memo(function Footer() {
           </div>
 
           <p className="mt-2 text-[10px] text-neutral-600">
-            © {new Date().getFullYear()} Shere Khan Restaurants
+            © {new Date().getFullYear()} Shere Khan Kitchen
           </p>
         </div>
 
         {/* Hours */}
         <div className="text-center lg:text-left text-xs text-neutral-700 space-y-2">
-          <p className="font-bold text-[#DC2626]">Hours</p>
+          <p className="font-bold text-[#F15A24]">Hours</p>
           <p>Mon–Thu: 17:00–22:00</p>
           <p>Fri–Sat: 17:00–23:00</p>
           <p>Sun: 17:00–22:00</p>

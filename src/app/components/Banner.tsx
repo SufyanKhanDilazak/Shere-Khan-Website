@@ -1,4 +1,3 @@
-// components/Banner.tsx
 'use client';
 
 import { useEffect, useRef, useCallback, memo } from 'react';
@@ -32,7 +31,7 @@ export const Banner = memo(function Banner() {
     return () => ctx.revert();
   }, []);
 
-  // Ensure video autoplays + loops robustly
+  // Ensure video plays robustly
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
@@ -48,7 +47,6 @@ export const Banner = memo(function Banner() {
     v.setAttribute('loop', '');
 
     const safePlay = () => v.play().catch(() => {});
-
     const onLoaded = () => safePlay();
     const onEnded = () => {
       try {
@@ -65,7 +63,6 @@ export const Banner = memo(function Banner() {
     });
 
     safePlay();
-
     return () => {
       v.removeEventListener('loadedmetadata', onLoaded);
       v.removeEventListener('canplaythrough', onLoaded);
@@ -73,7 +70,7 @@ export const Banner = memo(function Banner() {
     };
   }, []);
 
-  // Optional parallax pointer effect
+  // Parallax pointer effect
   const onPointerMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const el = sectionRef.current;
     if (!el) return;
@@ -136,32 +133,48 @@ export const Banner = memo(function Banner() {
           [transform:translateZ(120px)]
         "
       >
+        {/* Badge */}
         <div
           className="
             inline-flex flex-col items-center
-            rounded-2xl border border-white/10 bg-black/35
-            px-4 py-2 sm:px-5 sm:py-2.5
-            backdrop-blur-md shadow-[0_12px_30px_rgba(0,0,0,0.3)]
+            rounded-full border border-white/30 bg-black/40
+            px-5 py-1.5 sm:px-6 sm:py-2
+            backdrop-blur-md
+            shadow-[0_0_20px_rgba(0,0,0,0.5)]
           "
         >
-          <p className="text-[10px] sm:text-xs tracking-[0.2em] text-white/80 uppercase">
-            Authentic Desi Kitchen
+          <p
+            className="
+              text-[11px] sm:text-xs tracking-[0.25em]
+              uppercase font-extrabold
+              text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]
+            "
+          >
+            Est 1987
           </p>
         </div>
 
+        {/* Heading */}
         <h1
           className="
             mt-3
             text-white font-extrabold leading-[1.05]
-            text-[clamp(28px,6vw,56px)]
-            drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]
+            text-[clamp(32px,6vw,60px)]
+            drop-shadow-[0_4px_28px_rgba(0,0,0,0.6)]
           "
         >
-          Shere Khan Restaurant
+          Shere Khan Kitchen
         </h1>
 
-        <p className="mt-2 max-w-2xl text-white/85 text-sm sm:text-base leading-relaxed">
-          Altrincham’s best desi flavours — fresh, fast, and unforgettable.
+        {/* Tagline */}
+        <p
+          className="
+            mt-2 max-w-2xl text-white font-bold
+            text-sm sm:text-lg leading-relaxed
+            drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]
+          "
+        >
+          The Tiger Roars Again.
         </p>
       </div>
 
@@ -170,7 +183,14 @@ export const Banner = memo(function Banner() {
         <button
           type="button"
           onClick={orderNow}
-          className="w-full text-center border-2 border-[#7A1D1D] bg-[#F15A24] text-white rounded-xl px-6 py-3 font-extrabold shadow-lg active:translate-y-[1px] transition-transform"
+          className="
+            w-full text-center
+            bg-[#52f1e6] text-white
+            rounded-md px-5 py-2
+            text-sm sm:text-base font-semibold
+            shadow-md transition-all
+            hover:shadow-lg hover:brightness-110 active:scale-[0.98]
+          "
           aria-label="Order now"
         >
           Order Now 🍴

@@ -1,32 +1,44 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat, Bebas_Neue, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Footer from "./components/Footer";
 import { Header } from "./components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Body text
+const fontBody = Montserrat({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
+  variable: "--font-body",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Headings (poster style)
+const fontHeading = Bebas_Neue({
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
+  variable: "--font-heading",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yourdomain.com";
+// Optional mono
+const fontMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+});
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.sherekhankitchen.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Shere Khan Restaurant | Online Ordering in Altrincham, UK",
+  title: "Shere Khan Kitchen | Online Ordering in Altrincham, UK",
   description:
-    "Order delicious food online from Shere Khan Restaurant in Altrincham, UK. Freshly prepared meals with fast pickup & delivery options.",
+    "Order delicious food online from Shere Khan Kitchen in Altrincham, UK. Freshly prepared meals with fast pickup & delivery options.",
   keywords: [
-    "Shere Khan Restaurant",
+    "Shere Khan Kitchen",
     "Restaurant in Altrincham",
     "UK restaurant",
     "order food online Altrincham",
@@ -35,21 +47,21 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Shere Khan Restaurant | Order Online",
+    title: "Shere Khan Kitchen | Order Online",
     description:
-      "Enjoy authentic meals at Shere Khan Restaurant in Altrincham, UK. Order online for pickup or delivery.",
+      "Enjoy authentic meals at Shere Khan Kitchen in Altrincham, UK. Order online for pickup or delivery.",
     url: SITE_URL,
-    siteName: "Shere Khan Restaurant",
+    siteName: "Shere Khan Kitchen",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.jpg" }],
+    images: [{ url: "/og.jpg" }], // make sure /public/og.jpg exists
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shere Khan Restaurant | Order Online",
+    title: "Shere Khan Kitchen | Order Online",
     description:
-      "Enjoy authentic meals at Shere Khan Restaurant in Altrincham, UK. Order online for pickup or delivery.",
-    images: ["/og.jpg"],
+      "Enjoy authentic meals at Shere Khan Kitchen in Altrincham, UK. Order online for pickup or delivery.",
+    images: ["/og.jpg"], // use the same OG image here
   },
   robots: {
     index: true,
@@ -62,7 +74,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  applicationName: "Shere Khan Restaurant",
+  applicationName: "Shere Khan Kitchen", // fixed typo
   category: "Food & Drink",
 };
 
@@ -77,9 +89,9 @@ export const viewport: Viewport = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  name: "Shere Khan Restaurant",
+  name: "Shere Khan Kitchen",
   url: SITE_URL,
-  image: `${SITE_URL}/og.jpg`,
+  image: `${SITE_URL}/logo.png`, // ensure /public/logo.png exists
   address: {
     "@type": "PostalAddress",
     addressLocality: "Altrincham",
@@ -87,32 +99,36 @@ const orgJsonLd = {
     addressCountry: "GB",
   },
   servesCuisine: ["Desi", "Pakistani", "Indian"],
-  acceptsReservations: "True",
+  acceptsReservations: true,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${fontBody.variable} ${fontHeading.variable} ${fontMono.variable}`}
+    >
       <head>
-        {/* Performance hints (safe to keep even if the widget is not on the first paint) */}
+        {/* Performance hints */}
         <link rel="preconnect" href="https://widget.deliverect.com" crossOrigin="" />
-        {/* If you have these assets, keep them to improve LCP; remove if unused */}
+        {/* Preloads (only keep if these files exist) */}
         <link rel="preload" as="image" href="/gallery/hero-cover.jpg" />
-        <link rel="preload" as="image" href="/og.jpg" />
+        <link rel="preload" as="image" href="/logo.png" />
         <link rel="preload" as="video" href="/vid.mp4" type="video/mp4" />
-        {/* JSON-LD for richer search appearance */}
+        {/* JSON-LD */}
         <Script id="org-jsonld" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify(orgJsonLd)}
         </Script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header/>
+      <body className="antialiased">
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
 
-        {/* ✅ Deliverect Widget (config first, then script) */}
+        {/* Deliverect Widget */}
         <Script id="deliverect-config" strategy="afterInteractive">
-          {`window.DeliverectWidgetClient = "shere-khan-restaurants";`}
+          {`window.DeliverectWidgetClient = "shere-khan-kitchen";`}
         </Script>
         <Script
           id="deliverect-widget"

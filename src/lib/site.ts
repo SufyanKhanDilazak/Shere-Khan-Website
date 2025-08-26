@@ -1,7 +1,7 @@
 // lib/site.ts
 export const BIZ = {
     name: 'Shere Khan Kitchen',
-    tagline: 'Altrincham’s Best Desi Restaurant',
+    tagline: 'Altrincham’s Best Desi Kitchen',
     orderUrl: 'https://shere-khan-restaurants.deliverectdirect.com',
     address: '2 Peter St, Altrincham WA14 2DS, United Kingdom',
     gmbRating: 4.9,
