@@ -54,14 +54,14 @@ export const metadata: Metadata = {
     siteName: "Shere Khan Kitchen",
     locale: "en_GB",
     type: "website",
-    images: [{ url: "/og.jpg" }], // make sure /public/og.jpg exists
+    images: [{ url: "/og.jpg" }], // ensure /public/og.jpg exists
   },
   twitter: {
     card: "summary_large_image",
     title: "Shere Khan Kitchen | Order Online",
     description:
       "Enjoy authentic meals at Shere Khan Kitchen in Altrincham, UK. Order online for pickup or delivery.",
-    images: ["/og.jpg"], // use the same OG image here
+    images: ["/og.jpg"],
   },
   robots: {
     index: true,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  applicationName: "Shere Khan Kitchen", // fixed typo
+  applicationName: "Shere Khan Kitchen",
   category: "Food & Drink",
 };
 
@@ -111,30 +111,47 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         {/* Performance hints */}
+        <link rel="dns-prefetch" href="https://widget.deliverect.com" />
         <link rel="preconnect" href="https://widget.deliverect.com" crossOrigin="" />
-        {/* Preloads (only keep if these files exist) */}
+
+        {/* Preloads (keep only if these files exist) */}
         <link rel="preload" as="image" href="/gallery/hero-cover.jpg" />
         <link rel="preload" as="image" href="/logo.png" />
         <link rel="preload" as="video" href="/vid.mp4" type="video/mp4" />
+
         {/* JSON-LD */}
         <Script id="org-jsonld" type="application/ld+json" strategy="beforeInteractive">
           {JSON.stringify(orgJsonLd)}
         </Script>
+
+        {/* IMPORTANT: Set client BEFORE the widget loads to avoid 404 inside widget */}
+        <Script id="deliverect-config" strategy="beforeInteractive">
+          {`window["DeliverectWidgetClient"] = "shere-khan-restaurants";`}
+        </Script>
       </head>
+
       <body className="antialiased">
         <Header />
         {children}
         <Footer />
 
-        {/* Deliverect Widget */}
-        <Script id="deliverect-config" strategy="afterInteractive">
-          {`window.DeliverectWidgetClient = "shere-khan-kitchen";`}
-        </Script>
+        {/* Load the widget after hydration (client is already defined above) */}
         <Script
           id="deliverect-widget"
           src="https://widget.deliverect.com/widget.v1.js"
           strategy="afterInteractive"
         />
+
+        {/* No-JS fallback link (opens Direct in new tab) */}
+        <noscript>
+          <a
+            href="https://shere-khan-restaurants.deliverectdirect.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Order Online
+          </a>
+        </noscript>
       </body>
     </html>
   );
