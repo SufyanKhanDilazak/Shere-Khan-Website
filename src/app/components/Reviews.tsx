@@ -52,7 +52,7 @@ export const Reviews = memo(function Reviews() {
           style={{ color: PALETTE.orange }} // ✅ also orange
         >
           ⭐ {BIZ.gmbRating.toFixed(1)} based on{' '}
-          {Intl.NumberFormat().format(BIZ.gmbReviews ?? 0)} Google reviews
+          {Intl.NumberFormat().format(BIZ.gmbReviews ?? 0)} Overall reviews
         </p>
       )}
 
