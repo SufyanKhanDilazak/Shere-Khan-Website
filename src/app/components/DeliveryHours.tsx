@@ -71,7 +71,7 @@ export const DeliveryHours = memo(function DeliveryHours() {
               className="text-2xl sm:text-3xl lg:text-4xl font-extrabold drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]"
               style={{ color: PALETTE.orange }}
             >
-              Delivery Hours
+              Opening Hours
             </h2>
             <div className="mx-auto mt-2 inline-flex items-center gap-2 rounded-full bg-black/55 px-4 py-1 backdrop-blur-[1px]">
               <svg

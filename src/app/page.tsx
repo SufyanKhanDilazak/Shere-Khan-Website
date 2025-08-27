@@ -11,6 +11,7 @@ import { DeliveryHours } from './components/DeliveryHours';
 import { PALETTE } from '@/lib/site';
 import { LocalSpotlight } from './components/LocalSpotlight';
 import ProfileCard from './components/Profile';
+import Delivery from './components/Delivery';
 
 /** Allow CSS custom properties like --orange, --teal, etc. */
 type CSSVars = React.CSSProperties & {
@@ -137,12 +138,7 @@ export default function Page() {
           </div>
           <MotifBar />
           <Countup />
-          <ProfileCard
-  avatarUrl="/menu.jpg"
-  enableTilt={true}
-  enableMobileTilt={false}
-  className="mx-auto"
-/>
+          <Delivery/>
           <Menu />
           <LocalSpotlight />
           <Reviews />

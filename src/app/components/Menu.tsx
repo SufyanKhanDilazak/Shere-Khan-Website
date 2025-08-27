@@ -15,18 +15,18 @@ type Category = {
 
 const MENU_CATEGORIES: Category[] = [
   {
-    title: 'Naanwitch',
-    desc: 'Our cult-favorite stuffed naan sandwiches—fresh, saucy, and toasted.',
-    src: '/naan.jpg',
+    title: 'Naanwhich',
+    desc: 'Traditional Shere khan Chicken seekh kabab made with Chicken mince, onions, chilli and spices, wrapped in a spiral naan, with Mozzarella cheese and served with, Red onion, Greek yoghurt and fiery ketchup',
+    src: '/naann.jpg',
   },
   {
     title: 'Biryani',
-    desc: 'Saffron basmati sealed with dum; aromatic, layered and celebratory.',
+    desc: 'SERVED WITH FRESH RAITA, MIXED PEPPERS, (ADD CURRY SAUCE)',
     src: '/biryani.jpg',
   },
   {
     title: 'Platters & Mixed Grills',
-    desc: 'A show of tandoor—seekh, tikka, prawns, and veggies on one tray.',
+    desc: '2 lamb chops, 2 Tikki seikh kebabs, 4 chickent tikka.',
     src: '/platter.jpg',
   },
   {
@@ -36,12 +36,12 @@ const MENU_CATEGORIES: Category[] = [
   },
   {
     title: 'Loaded Fries',
-    desc: 'Masala fries crowned with chutneys, cheese, and smoky toppings.',
+    desc: 'MELTED CHEDDAR, SEEKH KEBAB, BANG BANG SAUCE, YOUGHURT SAUCE, FRIED ONIONS.',
     src: '/fries.jpg',
   },
   {
     title: 'Appetisers',
-    desc: 'Pani puri, chaats, and crispy bites for a lively start.',
+    desc: 'Fish, samosa chaats, and paneer tikka for a lively start.',
     src: '/samosa.jpg',
   },
 ];

@@ -7,7 +7,7 @@ const BIZ = {
   name: 'Shere Khan Kitchen',
   orderUrl: 'https://shere-khan-restaurants.deliverectdirect.com',
   address: '2 Peter St, Altrincham WA14 2DS, United Kingdom',
-  phone: '+44 161 000 0000',
+  phone: '0161 566 0457',
   coords: { lat: 53.3879, lng: -2.3499 },
 } as const;
 
@@ -24,6 +24,7 @@ const Footer: React.FC = memo(function Footer() {
       const L = await import('leaflet');
       if (cancelled) return;
 
+      // Reset if hot-reloaded
       if (
         elLocal.dataset.mapInitialized === 'true' ||
         elLocal.classList.contains('leaflet-container')
@@ -68,10 +69,19 @@ const Footer: React.FC = memo(function Footer() {
     };
   }, []);
 
-  const telHref = `tel:${BIZ.phone.replace(/[()\s-]/g, '')}`;
+  const telHref = `tel:${BIZ.phone.replace(/[()\\s-]/g, '')}`;
 
   return (
-    <footer className="mt-10 border-t-2 border-[#52f1e6]/70 bg-white py-6">
+    <footer className="relative z-0 mt-10 border-t-2 border-[#52f1e6]/70 bg-white py-6">
+      {/* Force Leaflet panes to stay under overlays */}
+      <style jsx global>{`
+        .leaflet-pane,
+        .leaflet-top,
+        .leaflet-bottom {
+          z-index: 0 !important;
+        }
+      `}</style>
+
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-4 md:px-6 lg:grid-cols-3">
         {/* Info */}
         <div className="text-center lg:text-left space-y-1.5">
@@ -155,15 +165,15 @@ const Footer: React.FC = memo(function Footer() {
 
         {/* Hours */}
         <div className="text-center lg:text-left text-xs text-neutral-700 space-y-2">
-          <p className="font-bold text-[#F15A24]">Hours</p>
+          <p className="font-bold text-[#F15A24]">Opening Hours</p>
           <p>Mon–Thu: 17:00–22:00</p>
           <p>Fri–Sat: 17:00–23:00</p>
           <p>Sun: 17:00–22:00</p>
         </div>
 
         {/* Map */}
-        <div className="h-40 md:h-48 rounded-lg border border-[#7A1D1D] shadow">
-          <div ref={mapRef} className="h-full w-full rounded-lg" />
+        <div className="relative z-0 h-40 md:h-48 rounded-lg border border-[#7A1D1D] shadow overflow-hidden">
+          <div ref={mapRef} className="relative z-0 h-full w-full rounded-lg" />
         </div>
       </div>
     </footer>
