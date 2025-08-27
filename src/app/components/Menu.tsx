@@ -21,7 +21,7 @@ const MENU_CATEGORIES: Category[] = [
   },
   {
     title: 'Biryani',
-    desc: 'SERVED WITH FRESH RAITA, MIXED PEPPERS, (ADD CURRY SAUCE)',
+    desc: 'Served with fresh raita, mixed peppers, and curry sauce (optional).',
     src: '/biryani.jpg',
   },
   {
@@ -36,7 +36,7 @@ const MENU_CATEGORIES: Category[] = [
   },
   {
     title: 'Loaded Fries',
-    desc: 'MELTED CHEDDAR, SEEKH KEBAB, BANG BANG SAUCE, YOUGHURT SAUCE, FRIED ONIONS.',
+    desc: 'Melted cheddar, seekh kebab, bang bang sauce, yoghurt sauce, fried onions.',
     src: '/fries.jpg',
   },
   {
