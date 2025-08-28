@@ -46,16 +46,6 @@ export const Reviews = memo(function Reviews() {
         Guest Reviews
       </h2>
 
-      {(BIZ.gmbRating ?? 0) > 0 && (
-        <p
-          className="mb-6 text-center text-sm"
-          style={{ color: PALETTE.orange }} // ✅ also orange
-        >
-          ⭐ {BIZ.gmbRating.toFixed(1)} based on{' '}
-          {Intl.NumberFormat().format(BIZ.gmbReviews ?? 0)} Overall reviews
-        </p>
-      )}
-
       <div
         className={`elfsight-app-${WIDGET_ID}`}
         data-elfsight-app-lazy

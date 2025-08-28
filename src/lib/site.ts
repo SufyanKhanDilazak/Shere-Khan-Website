@@ -4,8 +4,8 @@ export const BIZ = {
     tagline: 'Altrincham’s Best Desi Kitchen',
     orderUrl: 'https://shere-khan-restaurants.deliverectdirect.com',
     address: '2 Peter St, Altrincham WA14 2DS, United Kingdom',
-    gmbRating: 4.9,
-    gmbReviews: 1300,
+    gmbRating: 5.0,
+    gmbReviews: 1500,
   } as const;
   
   export const PALETTE = {
