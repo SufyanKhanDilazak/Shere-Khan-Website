@@ -169,6 +169,7 @@ const Footer: React.FC = memo(function Footer() {
           <p>Mon–Thu: 17:00–22:00</p>
           <p>Fri–Sat: 17:00–23:00</p>
           <p>Sun: 17:00–22:00</p>
+          <p className="text-red-600 text-md">Closed on Tuesday</p>
         </div>
 
         {/* Map */}

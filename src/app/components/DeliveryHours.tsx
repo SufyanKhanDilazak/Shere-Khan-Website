@@ -40,7 +40,7 @@ useGLTF.preload('/riksha.glb');
 export const DeliveryHours = memo(function DeliveryHours() {
   const rows: ReadonlyArray<Readonly<[string, string]>> = [
     ['Mon', '17:00 – 22:00'],
-    ['Tue', '17:00 – 22:00'],
+    ['Tue', 'Closed'],
     ['Wed', '17:00 – 22:00'],
     ['Thu', '17:00 – 22:00'],
     ['Fri', '17:00 – 23:00'],
