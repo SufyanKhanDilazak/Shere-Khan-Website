@@ -14,7 +14,7 @@ type BizOptional = typeof BIZ & {
 const biz: BizOptional = BIZ;
 
 const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'info@sherekhan.example';
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'perriawan@gmail.com';
 
 export default function ContactPage() {
   const PHONE: string | undefined = biz.phone;

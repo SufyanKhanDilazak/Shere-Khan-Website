@@ -7,7 +7,7 @@ const BIZ = {
   name: 'Shere Khan Kitchen',
   orderUrl: 'https://shere-khan-restaurants.deliverectdirect.com',
   address: '2 Peter St, Altrincham WA14 2DS, United Kingdom',
-  phone: '0161 566 0457',
+  phone: '+44 161 566 0457',
   coords: { lat: 53.3879, lng: -2.3499 },
 } as const;
 
