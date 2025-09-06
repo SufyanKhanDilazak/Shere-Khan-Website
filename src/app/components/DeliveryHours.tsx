@@ -1,41 +1,7 @@
 'use client';
 
-import { memo, useRef } from 'react';
-import * as THREE from 'three';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, Float, useGLTF } from '@react-three/drei';
+import { memo } from 'react';
 import { BIZ, PALETTE } from '@/lib/site';
-import type { JSX } from 'react';
-
-const RikshaModel = memo(function RikshaModel(
-  props: JSX.IntrinsicElements['group']
-) {
-  const { scene } = useGLTF('/riksha.glb') as unknown as { scene: THREE.Group };
-  const ref = useRef<THREE.Group>(null);
-
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime() * 0.35;
-    const roamWidth = 5.0;
-    const roamDepth = 0.8;
-    const x = Math.sin(t) * roamWidth;
-    const z = Math.cos(t * 0.7) * roamDepth;
-
-    const g = ref.current;
-    if (!g) return;
-    g.position.set(x, 0, z);
-    g.rotation.y = -Math.cos(t) * 0.9;
-    g.rotation.z = Math.sin(t * 2) * 0.03;
-  });
-
-  return (
-    <group ref={ref} {...props} dispose={null}>
-      <Float floatIntensity={0.6} rotationIntensity={0.3} speed={1.2}>
-        <primitive object={scene} scale={0.85} />
-      </Float>
-    </group>
-  );
-});
-useGLTF.preload('/riksha.glb');
 
 export const DeliveryHours = memo(function DeliveryHours() {
   const rows: ReadonlyArray<Readonly<[string, string]>> = [
@@ -115,24 +81,22 @@ export const DeliveryHours = memo(function DeliveryHours() {
         </div>
       </div>
 
-      {/* FRONT overlay canvas */}
+      {/* Decorative, lightweight glow overlay (no 3D) */}
       <div
         className="
           pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
           w-[150%] sm:w-[170%] lg:w-[200%]
           h-[220px] sm:h-[280px] lg:h-[340px]
           z-30 overflow-visible
+          opacity-60
         "
         aria-hidden
-      >
-        <Canvas camera={{ position: [0, 1.4, 5], fov: 45 }} gl={{ alpha: true }}>
-          <ambientLight intensity={0.65} />
-          <directionalLight position={[3, 4, 2]} intensity={1} />
-          <directionalLight position={[-3, 2, -2]} intensity={0.45} />
-          <RikshaModel />
-          <Environment preset="city" />
-        </Canvas>
-      </div>
+        style={{
+          background:
+            'radial-gradient(closest-side, rgba(82,241,230,0.18), rgba(0,0,0,0))',
+          filter: 'blur(2px)',
+        }}
+      />
     </section>
   );
 });
